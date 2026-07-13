@@ -11,9 +11,10 @@ def upload_document(file: UploadFile = File(...)):
     result = process_document(file)
 
     return {
-        "filename": file.filename,
-        "saved_to": result["path"],
-        "characters": len(result["text"]),
-        "number_of_chunks": len(result["chunks"]),
-        "first_chunk": result["chunks"][0] if result["chunks"] else ""
-    }
+    "filename": file.filename,
+    "saved_to": result["path"],
+    "characters": len(result["text"]),
+    "number_of_chunks": len(result["chunks"]),
+    "embedding_dimension": len(result["embeddings"][0]),
+    "first_chunk": result["chunks"][0]
+}
